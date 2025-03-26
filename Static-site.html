@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Business Quotes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Lobster+Two&family=Moul&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #f8d04e;
+            color: #333;
+            transition: background 1s, color 0.5s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        h1 {
+            font-family: 'Moul', cursive;
+            font-size: 24px;
+        }
+        .quote {
+            font-size: 24px;
+            font-family: 'Lobster', cursive;
+            margin-top: 20px;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+        .author {
+            font-size: 18px;
+            font-family: 'Lobster Two', cursive;
+            margin-top: 10px;
+            text-align: center;
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .dark-mode {
+            background-color: #333;
+            color: #f3c632;
+            
+        }
+        .toggle-btn {
+            margin-top: 50px;
+            padding: 10px 20px;
+            background-color: #f8d04e;
+            font-family: 'Inter', cursive;
+            color: rgb(32, 31, 31);
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Golden Quotes</h1>
+    <p class="quote" id="dailyQuote"></p>
+    <span class="author" id="quoteAuthor"></span>
+    <button class="toggle-btn" onclick="toggleDarkMode()">Use Dark Mode</button>
+
+    <script>
+        const quotes = [
+            { text: "The best investment you can make is in yourself.", author: "Warren Buffett" },
+            { text: "Innovation distinguishes between a leader and a follower.", author: "Steve Jobs" },
+            { text: "Your most unhappy customers are your greatest source of learning.", author: "Bill Gates" },
+            { text: "If you do build a great experience, customers tell each other about that. Word of mouth is very powerful.", author: "Jeff Bezos" },
+            { text: "Business opportunities are like buses, there’s always another one coming.", author: "Richard Branson" },
+            { text: "The only thing standing between you and your goal is the story you keep telling yourself as to why you can't achieve it.", author: "Jordan Belfort" }
+        ];
+
+        function displayQuote() {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            document.getElementById("dailyQuote").textContent = `"${quotes[randomIndex].text}"`;
+            document.getElementById("quoteAuthor").textContent = quotes[randomIndex].author;
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+        }
+
+        // Load a quote when the page loads
+        window.onload = displayQuote;
+    </script>
+</body>
+</html>
